@@ -2,32 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <title>React JS Essential Training</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>React JS Essential Training</title>
 </head>
 
 <body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const robot = '🤖'
-        const cowboy = '🤠'
-        const moon = '🌚'
-        const name = 'rafa'
+  <div id="root"></div>
+  <script type="text/babel">
+    function Heading() {
+      return <h1>Eve's Kitchen</h1>
+    }
 
-        const heading = <ul>
-            <li>{robot}</li>
-            <li>{cowboy}</li>
-            <li>{moon}</li>
-            <li>{name.toUpperCase()}</li>
-            <li>{name.length}</li>
-        </ul>;
-        
-        ReactDOM.render(heading, document.getElementById('root'))
-    </script>
+    function Content() {
+      return <section>
+        <p>We serve the most delicious food around</p>
+      </section>
+    }
+
+    function App() {
+      return <div>
+        <Heading />
+        <Content />
+      </div>
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'))
+  </script>
 </body>
 
 </html>
