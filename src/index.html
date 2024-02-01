@@ -18,7 +18,7 @@
     }
 
     function Content({ adjective, dishes }) {
-      return <div>
+      return <>
         <img src="https://images.pexels.com/photos/827528/pexels-photo-827528.jpeg?auto=compress&cs=tinysrgb&w=6000&h=400&dpr=1" alt="restaurant look" />
 
         <section>
@@ -29,7 +29,7 @@
           <p>Our menu is:</p>
           <Menu dishes={dishes} />
         </section>
-      </div>
+      </>
     }
 
     function Menu({ dishes }) {
@@ -51,11 +51,11 @@
         { id: 5, name: 'ramen' },
       ]
 
-      return <div>
+      return <>
         <Heading name={name} />
         <Content adjective={adjective} dishes={dishes} />
         <Footer year={new Date().getFullYear()} />
-      </div>
+      </>
     }
 
     ReactDOM.render(<App name="Rafa" adjective="fucking delicious" />, document.getElementById('root'))
