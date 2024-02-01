@@ -11,12 +11,9 @@
 
 <body>
     <div id="root"></div>
-    <h1>Getting started with React</h1>
     <script>
-        ReactDOM.render(
-            React.createElement('h1', null, 'Getting started with React'),
-            document.getElementById('root')
-        )
+        const heading = React.createElement('h1', null, 'Getting started with React!!');
+        ReactDOM.render(heading, document.getElementById('root'))
     </script>
 </body>
 
