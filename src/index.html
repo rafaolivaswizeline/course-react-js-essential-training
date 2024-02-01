@@ -13,24 +13,29 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    function Heading() {
-      return <h1>Eve's Kitchen</h1>
+    function Heading({ name }) {
+      return <h1>{name}'s Kitchen</h1>
     }
 
-    function Content() {
+    function Content({ adjective }) {
       return <section>
-        <p>We serve the most delicious food around</p>
+        <p>We serve the most {adjective} food around</p>
       </section>
     }
 
-    function App() {
+    function Footer({ year }) {
+      return <footer>Copyright {year}</footer>
+    }
+
+    function App({ name, adjective }) {
       return <div>
-        <Heading />
-        <Content />
+        <Heading name={name} />
+        <Content adjective={adjective} />
+        <Footer year={new Date().getFullYear()} />
       </div>
     }
 
-    ReactDOM.render(<App />, document.getElementById('root'))
+    ReactDOM.render(<App name="Rafa" adjective="fucking delicious" />, document.getElementById('root'))
   </script>
 </body>
 
