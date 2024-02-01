@@ -13,10 +13,17 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+        const robot = '🤖'
+        const cowboy = '🤠'
+        const moon = '🌚'
+        const name = 'rafa'
+
         const heading = <ul>
-            <li>🤖</li>
-            <li>🤠</li>
-            <li>🌚</li>
+            <li>{robot}</li>
+            <li>{cowboy}</li>
+            <li>{moon}</li>
+            <li>{name.toUpperCase()}</li>
+            <li>{name.length}</li>
         </ul>;
         
         ReactDOM.render(heading, document.getElementById('root'))
