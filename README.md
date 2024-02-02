@@ -1,9 +1,4 @@
-- [Quick start](#quick-start)
-- [Tips](#tips)
-
-## Quick start
-
-1. Install [React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+[Course](https://www.linkedin.com/learning/react-js-essential-training-14836121)
 
 ## Tips
 
