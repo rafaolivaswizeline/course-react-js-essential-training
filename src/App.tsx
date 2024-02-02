@@ -1,22 +1,16 @@
+import { useState } from 'react'
 import './App.css'
-import Content from './components/Content'
-import Footer from './components/Footer'
-import Heading from './components/Heading'
 
 function App() {
-  const dishes = [
-    { id: 1, name: 'tacos' },
-    { id: 2, name: 'percheron' },
-    { id: 3, name: 'pizza' },
-    { id: 4, name: 'sushi' },
-    { id: 5, name: 'ramen' },
-  ]
+  const [emotion, setEmotion] = useState('happy')
 
   return (
     <>
-      <Heading name="Rafa" />
-      <Content adjective="fucking delicious" dishes={dishes} />
-      <Footer year={new Date().getFullYear()} />
+      <h1>I'm {emotion}</h1>
+      <button onClick={() => setEmotion('happy')}>Happy</button>
+      <button onClick={() => setEmotion('sad')}>Sad</button>
+      <button onClick={() => setEmotion('excited')}>Excited</button>
+      <button onClick={() => setEmotion('tired')}>Tired</button>
     </>
   )
 }
