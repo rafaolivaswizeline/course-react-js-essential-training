@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
   const [emotion, setEmotion] = useState('happy')
+
+  useEffect(() => {
+    console.log('App component was rendered')
+  }, []) // this empty array makes this hook be executed only on the first render
 
   return (
     <>
