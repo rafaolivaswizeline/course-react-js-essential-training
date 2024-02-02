@@ -1,7 +1,7 @@
-import './App.css';
-import Content from './components/Content';
-import Footer from './components/Footer';
-import Heading from './components/Heading';
+import './App.css'
+import Content from './components/Content'
+import Footer from './components/Footer'
+import Heading from './components/Heading'
 
 function App() {
   const dishes = [
@@ -12,11 +12,13 @@ function App() {
     { id: 5, name: 'ramen' },
   ]
 
-  return <>
-    <Heading name="Rafa" />
-    <Content adjective="fucking delicious" dishes={dishes} />
-    <Footer year={new Date().getFullYear()} />
-  </>
+  return (
+    <>
+      <Heading name="Rafa" />
+      <Content adjective="fucking delicious" dishes={dishes} />
+      <Footer year={new Date().getFullYear()} />
+    </>
+  )
 }
 
-export default App;
+export default App
