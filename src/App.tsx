@@ -1,90 +1,40 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 
-interface LiftData {
+interface TahoePeak {
+  key: string
   name: string
-  status: string
+  elevation: number
 }
 
-function Lift({ name, status }: LiftData) {
-  return <>{`${name}: ${status}`}</>
-}
-
-function App() {
-  const [data, setData] = useState<any>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<any>(null)
-
-  useEffect(() => {
-    setLoading(true)
-
-    function wait(time: number) {
-      return new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve()
-        }, time)
-      })
-    }
-
-    async function fetchProfile() {
-      try {
-        await wait(3000)
-        const url = `https://snowtooth.moonhighway.com/`
-
-        const options: RequestInit = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: `query {
-              allLifts {
-                name
-                status
-              }
-            }`,
-          }),
-        }
-
-        const data = await (await fetch(url, options)).json()
-        console.log(data.data)
-        setData(data.data)
-        setLoading(false)
-      } catch (error) {
-        setError(error)
-      }
-    }
-
-    fetchProfile()
-  }, [])
-
-  if (error) {
-    return (
-      <>
-        <h1>Error</h1>
-        <pre>{error.toString()}</pre>
-      </>
-    )
-  }
-
-  if (loading) {
-    return (
-      <>
-        <h1>Wait for it...</h1>
-      </>
-    )
+function List({ data, renderItem, renderEmpty }: { data: any; renderItem: (item: any) => any; renderEmpty: any }) {
+  if (!data?.length) {
+    return renderEmpty
   }
 
   return (
+    <ul>
+      {data.map((item: any) => (
+        <li key={item.key}>{renderItem(item)}</li>
+      ))}
+    </ul>
+  )
+}
+
+function App() {
+  const tahoe_peaks: TahoePeak[] = [
+    { key: 'Freel', name: 'Freel', elevation: 10891 },
+    { key: 'Monument', name: 'Monument', elevation: 10067 },
+    { key: 'Pyramid', name: 'Pyramid', elevation: 9983 },
+    { key: 'Tallac', name: 'Tallac', elevation: 9735 },
+  ]
+
+  return (
     <>
-      <h1>Lifts</h1>
-      <ul>
-        {data?.allLifts?.map((lift: LiftData) => (
-          <li>
-            <Lift {...lift}></Lift>
-          </li>
-        ))}
-      </ul>
+      <List
+        data={tahoe_peaks}
+        renderItem={({ name, elevation }: TahoePeak) => `${name}: ${elevation}`}
+        renderEmpty={<p>Empty list</p>}
+      ></List>
     </>
   )
 }
