@@ -8,7 +8,7 @@ export default function About() {
     <>
       <h1>About page</h1>
       <nav>
-        {isHistoryVisible ? (
+        {!isHistoryVisible ? (
           <Link to="/about/history" onClick={() => toggleHistoryVisibility()}>
             Show history
           </Link>
