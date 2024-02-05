@@ -1,49 +1,9 @@
-import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-
-function Home() {
-  return (
-    <>
-      <h1>Home page</h1>
-      <nav>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
-    </>
-  )
-}
-
-function About() {
-  return (
-    <>
-      <h1>About page</h1>
-      <nav>
-        <Link to="/about/history"></Link>
-      </nav>
-      <Outlet></Outlet>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
-    </>
-  )
-}
-
-function History() {
-  return <p>Some nice text about the history of the company...</p>
-}
-
-function Contact() {
-  return (
-    <>
-      <h1>Contact page</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  )
-}
+import Home from './components/Home'
+import About from './components/About'
+import Contact from './components/Contact'
+import History from './components/History'
 
 function App() {
   return (
