@@ -1,40 +1,62 @@
+import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom'
 import './App.css'
 
-interface TahoePeak {
-  key: string
-  name: string
-  elevation: number
+function Home() {
+  return (
+    <>
+      <h1>Home page</h1>
+      <nav>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+    </>
+  )
 }
 
-function List({ data, renderItem, renderEmpty }: { data: any; renderItem: (item: any) => any; renderEmpty: any }) {
-  if (!data?.length) {
-    return renderEmpty
-  }
-
+function About() {
   return (
-    <ul>
-      {data.map((item: any) => (
-        <li key={item.key}>{renderItem(item)}</li>
-      ))}
-    </ul>
+    <>
+      <h1>About page</h1>
+      <nav>
+        <Link to="/about/history"></Link>
+      </nav>
+      <Outlet></Outlet>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+    </>
+  )
+}
+
+function History() {
+  return <p>Some nice text about the history of the company...</p>
+}
+
+function Contact() {
+  return (
+    <>
+      <h1>Contact page</h1>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
   )
 }
 
 function App() {
-  const tahoe_peaks: TahoePeak[] = [
-    { key: 'Freel', name: 'Freel', elevation: 10891 },
-    { key: 'Monument', name: 'Monument', elevation: 10067 },
-    { key: 'Pyramid', name: 'Pyramid', elevation: 9983 },
-    { key: 'Tallac', name: 'Tallac', elevation: 9735 },
-  ]
-
   return (
     <>
-      <List
-        data={tahoe_peaks}
-        renderItem={({ name, elevation }: TahoePeak) => `${name}: ${elevation}`}
-        renderEmpty={<p>Empty list</p>}
-      ></List>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/about" element={<About></About>}>
+            <Route path="history" element={<History></History>}></Route>
+          </Route>
+          <Route path="/contact" element={<Contact></Contact>}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
